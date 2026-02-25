@@ -57,10 +57,9 @@ class SudokuSolver(Application):
         context = Context(board)
 
         ctl.add("base", [], SUDOKU_ENCODING)
+        ctl.load("sudoku_py.lp")
         ctl.ground([("base", [])], context)
         ctl.solve()
-
-
 
 if __name__ == "__main__":
     clingo_main(SudokuSolver())
