@@ -20,13 +20,18 @@ class Sudoku:
             s += "\n"
             if row % 3 == 0 and row < 9:
                 s += "\n"
-                
+
         return s
 
     @classmethod
     def from_str(cls, s: str) -> "Sudoku":
         sudoku = {}
-        # YOUR CODE HERE
+        lines = [line for line in s.strip().split('\n') if line.strip() != '']
+        for row_idx, line in enumerate(lines, start = 1):
+            tokens = line.split()
+            for col_idx, token in enumerate(tokens, start = 1):
+                if token != '-':
+                    sudoku[(row_idx, col_idx)] = int(token)
         return cls(sudoku)
 
     @classmethod
